@@ -1,5 +1,5 @@
 def component = [
-        backend:true,
+        frontend: true,
 ]
 pipeline {
     agent any
@@ -14,7 +14,7 @@ pipeline {
                     steps {
                         script {
                             sh "ls -al"
-                            sh "docker compose -p spark build --no-cache backend"
+                            sh "docker compose -p spark build --no-cache frontend"
                         }
                     }
                 }

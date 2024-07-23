@@ -1,0 +1,27 @@
+services:
+  demo:
+    container_name: backend
+    image: lifestooshort/spark-backend
+    build:
+      context: backend/backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - jenkins-network
+  frontend:
+    container_name: frontend
+    image: lifestooshort/spark-frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    restart: always
+    command : npm run deploy
+    ports:
+      - "5000:5000"
+    networks:
+      - jenkins-network
+networks:
+  jenkins-network:
+    external: true
