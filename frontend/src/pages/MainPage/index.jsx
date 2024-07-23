@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import styles from "./index.module.css";
-import logo from "../../assets/images/logo.png";
+import DailyComponent from "./DailyComponent";
+import TourComponent from "./TourComponent";
 export default function Main() {
   const [activeType, setActiveType] = useState(null);
   return (
     <div className={styles.container}>
       <div className={styles.optionsContainer}>
-        <img src={logo} alt="로고" className={styles.logo} />
         <form className={styles.inputContainer}>
           <input className={styles.input} type="text" placeholder="어쩌구" />
           <input className={styles.input} type="text" placeholder="저쩌구" />
@@ -15,18 +15,6 @@ export default function Main() {
         <button className={styles.button}>적용하기</button>
       </div>
       <div className={styles.mapContainer}>
-        <form className={styles.placeInputContainer}>
-          <input
-            className={styles.placeInput}
-            type="text"
-            placeholder="출발지를 입력해주세요."
-          />
-          <input
-            className={styles.placeInput}
-            type="text"
-            placeholder="도착지를 입력해주세요."
-          />
-        </form>
         <div className={styles.typeContainer}>
           <p
             className={`${styles.type} ${
@@ -45,7 +33,7 @@ export default function Main() {
             관광
           </p>
         </div>
-        <Map />
+        {activeType === "일상" ? <DailyComponent /> : <TourComponent />}
       </div>
     </div>
   );

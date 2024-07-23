@@ -1,10 +1,9 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 화면의 전체 높이 */
 }
 
 @media (prefers-reduced-motion: no-preference) {

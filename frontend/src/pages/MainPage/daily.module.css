@@ -1,0 +1,13 @@
+.placeInputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.placeInput {
+  width: 90%;
+  height: 60px;
+  background-color: #ebf1fb;
+  border: transparent;
+  margin: 5px;
+  border-radius: 20px;
+}

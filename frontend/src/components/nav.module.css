@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  margin: 20px;
+}
+.typeContainer {
+  display: flex;
+}
+.type {
+  margin: 0px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}

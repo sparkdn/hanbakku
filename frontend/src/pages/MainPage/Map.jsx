@@ -15,7 +15,7 @@ export default function Map() {
   }, []);
   return (
     <div>
-      <div id="map" style={{ width: "90%", height: "600px" }}></div>
+      <div id="map" style={{ width: "90%", height: "1000px" }}></div>
     </div>
   );
 }
