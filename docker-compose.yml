@@ -1,5 +1,5 @@
 services:
-  demo:
+  backend:
     container_name: backend
     image: lifestooshort/spark-backend
     build:
