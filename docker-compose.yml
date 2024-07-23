@@ -3,7 +3,7 @@ services:
     container_name: backend
     image: lifestooshort/spark-backend
     build:
-      context: backend/backend
+      context: backend
       dockerfile: Dockerfile
     restart: always
     ports:
