@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
 const { kakao } = window;
 export default function Map() {
   const [map, setMap] = useState(null);
@@ -14,8 +12,9 @@ export default function Map() {
     setMap(kakaoMap);
   }, []);
   return (
-    <div>
-      <div id="map" style={{ width: "90%", height: "1000px" }}></div>
-    </div>
+    <div
+      id="map"
+      style={{ width: "90%", height: "100%" }} // 인라인 스타일
+    ></div>
   );
 }

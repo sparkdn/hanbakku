@@ -3,7 +3,7 @@ import styles from "./daily.module.css";
 import Map from "./Map";
 export default function DailyComponent() {
   return (
-    <div>
+    <>
       <form className={styles.placeInputContainer}>
         <input
           className={styles.placeInput}
@@ -17,6 +17,6 @@ export default function DailyComponent() {
         />
       </form>
       <Map />
-    </div>
+    </>
   );
 }
