@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Map from "./Map";
 import styles from "./index.module.css";
 import DailyComponent from "./DailyComponent";
 import TourComponent from "./TourComponent";
@@ -35,7 +34,7 @@ export default function Main() {
           >
             관광
           </p>
-          {activeType === "관광" ? (
+          {activeType === "관광" && (
             <>
               <button
                 className={`${styles.searchButton} ${
@@ -54,12 +53,14 @@ export default function Main() {
                 목적지로 검색
               </button>
             </>
-          ) : (
-            ""
           )}
         </div>
 
-        {activeType === "일상" ? <DailyComponent /> : <TourComponent />}
+        {activeType === "일상" ? (
+          <DailyComponent />
+        ) : (
+          <TourComponent activeButton={activeButton} />
+        )}
       </div>
     </div>
   );

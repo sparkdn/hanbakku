@@ -48,7 +48,6 @@
 
 .typeContainer {
   display: flex;
-  /* margin: 2px; */
 }
 
 .type {
@@ -64,18 +63,14 @@
   width: 200px;
   height: 40px;
   margin: 10px;
-  background-color: #3372db;
-  color: white;
+  background-color: white;
+  color: black;
   border: transparent;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-.searchButton:hover {
-  background-color: #2656a4;
-}
-
 .activeButton {
-  background-color: #ff5722; /* 클릭 시 배경색 변경 */
-  color: white;
+  background-color: #e0eafa; /* 클릭 시 배경색 변경 */
+  color: black;
 }

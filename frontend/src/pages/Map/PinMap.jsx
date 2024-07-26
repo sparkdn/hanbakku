@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 const { kakao } = window;
-export default function Map() {
+
+export default function PinMap() {
   const [map, setMap] = useState(null);
   useEffect(() => {
     const mapContainer = document.getElementById("map"); // 지도를 표시한 곳
@@ -12,9 +13,9 @@ export default function Map() {
     setMap(kakaoMap);
   }, []);
   return (
-    <div
+    <divs
       id="map"
       style={{ width: "90%", height: "100%" }} // 인라인 스타일
-    ></div>
+    ></divs>
   );
 }

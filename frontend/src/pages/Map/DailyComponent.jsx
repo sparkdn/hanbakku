@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./daily.module.css";
-import Map from "./Map";
+import PoliLineMap from "./PoliLineMap";
 export default function DailyComponent() {
   return (
     <>
@@ -15,8 +15,8 @@ export default function DailyComponent() {
           type="text"
           placeholder="도착지를 입력해주세요."
         />
+        <PoliLineMap />
       </form>
-      <Map />
     </>
   );
 }
