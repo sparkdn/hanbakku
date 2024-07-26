@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+}
+
+.optionsContainer {
+  background-color: #2656a4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputContainer {
+  flex: 2;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 배치 */
+  align-items: center; /* 가로 가운데 정렬 */
+}
+.input {
+  background-color: transparent;
+  border-color: white;
+  width: 230px;
+  height: 45px;
+  margin: 15px;
+  color: white;
+}
+
+.input::placeholder {
+  color: white;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  margin-top: 30px;
+  background-color: #3372db;
+  color: white;
+  border: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mapContainer {
+  flex: 4;
+  height: 100vh;
+  width: 100%;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.typeContainer {
+  display: flex;
+}
+
+.type {
+  font-size: 30px;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.active {
+  color: #2656a4; /* 클릭 시 블루 색상 */
+}
+.searchButton {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  background-color: white;
+  color: black;
+  border: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.activeButton {
+  background-color: #e0eafa; /* 클릭 시 배경색 변경 */
+  color: black;
+}

@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App.css */
+html,
+body,
+#root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
+  overflow: hidden; /* 스크롤 방지 */
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column; /* 세로 방향으로 배치 */
+}
+
+nav {
+  flex: 2; /* Nav의 비율을 2로 설정 */
+  background-color: #333; /* 원하는 배경 색상 */
+  color: white; /* 원하는 글자 색상 */
+}
+
+main {
+  flex: 8; /* Main의 비율을 8로 설정 */
+  background-color: #f0f0f0; /* 원하는 배경 색상 */
+  overflow: hidden; /* 필요에 따라 설정 */
 }
