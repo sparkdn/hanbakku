@@ -14,7 +14,7 @@ pipeline {
                     steps {
                         script {
                             sh "ls -al"
-                            sh "docker compose -p spark build --no-cache configServer"
+                            sh "docker compose -p spark build --no-cache configserver"
                         }
                     }
                 }
