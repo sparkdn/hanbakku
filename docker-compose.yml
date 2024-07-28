@@ -22,7 +22,7 @@ services:
       - "5000:5000"
     networks:
       - jenkins-network
-  config:
+  configServer:
     container_name: configServer
     image: lifestooshort/spark-configServer
     build:
