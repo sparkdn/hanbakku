@@ -1,0 +1,104 @@
+def component = [
+        configServer:true,
+]
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage("Build") {
+                    steps {
+                        script {
+                            sh "ls -al"
+                            sh "docker compose -p spark build --no-cache configServer"
+                        }
+                    }
+                }
+        stage("Login") {
+                    steps {
+                        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Docker-hub', usernameVariable: 'DOCKER_USER_ID', passwordVariable: 'DOCKER_USER_PASSWORD']]) {
+                            sh """
+                                set +x
+                                echo $DOCKER_USER_PASSWORD | docker login -u $DOCKER_USER_ID --password-stdin
+                                set -x
+                            """
+                        }
+                    }
+                }
+        stage("Tag and Push") {
+                    steps {
+                        script {
+                            component.each { entry ->
+                                if (entry.value) {
+                                    def var = entry.key
+                                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Docker-hub', usernameVariable: 'DOCKER_USER_ID', passwordVariable: 'DOCKER_USER_PASSWORD']]) {
+                                        sh "docker push ${DOCKER_USER_ID}/spark-${var.toLowerCase()}"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        stage('Prune old images') {
+                    steps {
+                        script {
+                            sh "docker system prune --filter until=1h"
+                        }
+                    }
+                }
+
+        stage('Pull') {
+                steps {
+                    script {
+                        component.each { entry ->
+                            if (entry.value) {
+                                def var = entry.key
+                                sh "docker compose -p spark pull ${var.toLowerCase()}"
+                            }
+                        }
+                    }
+                }
+            }
+
+    stage('Up') {
+                steps {
+                    script {
+                        component.each { entry ->
+                            if (entry.value) {
+                                def var = entry.key
+                                try {
+                                    sh "docker compose -p spark up -d ${var.toLowerCase()}"
+                                } catch (Exception e) {
+                                    // 'docker compose up -d' 명령이 실패한 경우
+                                    echo "Failed to up. Starting 'docker compose start'..."
+                                    sh "docker compose -p spark restart ${var.toLowerCase()}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    }
+
+        post {
+            always {
+                // 항상 수행되는 작업, 예를 들어, 클린업 작업 등을 여기에 추가할 수 있습니다.
+                echo '빌드 프로세스 완료.'
+				// Remove all unused images to save space
+				sh 'docker image prune -f'
+            }
+            success {
+                // 빌드가 성공적으로 완료되었을 때 수행되는 작업
+                echo '성공적으로 빌드 및 배포되었습니다.'
+            }
+            failure {
+                // 빌드 실패 시 수행되는 작업
+                echo '빌드 또는 배포에 실패하였습니다.'
+            }
+
+    }
+}

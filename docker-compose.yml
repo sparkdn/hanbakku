@@ -22,6 +22,17 @@ services:
       - "5000:5000"
     networks:
       - jenkins-network
+    config:
+    container_name: configServer
+    image: lifestooshort/spark-configServer
+    build:
+      context: configServer
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - jenkins-network
 networks:
   jenkins-network:
     external: true
