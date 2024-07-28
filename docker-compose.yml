@@ -22,9 +22,9 @@ services:
       - "5000:5000"
     networks:
       - jenkins-network
-  configServer:
+  configserver:
     container_name: configServer
-    image: lifestooshort/spark-configServer
+    image: lifestooshort/spark-configserver
     build:
       context: configServer
       dockerfile: Dockerfile
