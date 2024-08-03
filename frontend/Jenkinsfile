@@ -4,6 +4,15 @@ def component = [
 pipeline {
     agent any
 
+    environment {
+        REACT_APP_MY_NAVER_CLIENT_ID = credentials('REACT_APP_MY_NAVER_CLIENT_ID')
+        REACT_APP_MY_NAVER_CLIENT_SECRET = credentials('REACT_APP_MY_NAVER_CLIENT_SECRET')
+        REACT_APP_MY_POWERBI_ID = credentials('REACT_APP_OTHER_VAR')
+        REACT_APP_MY_POWERBI_ID_URL = credentials('REACT_APP_MY_POWERBI_ID_URL')
+        REACT_APP_MY_POWERBI_TOKEN = credentials('REACT_APP_MY_POWERBI_TOKEN')
+        REACT_APP_KAKAO_API_KEY = credentials('REACT_APP_KAKAO_API_KEY')
+    }
+
     stages {
         stage('Checkout') {
             steps {
