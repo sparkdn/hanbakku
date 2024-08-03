@@ -7,7 +7,7 @@ pipeline {
     environment {
         REACT_APP_MY_NAVER_CLIENT_ID = credentials('REACT_APP_MY_NAVER_CLIENT_ID')
         REACT_APP_MY_NAVER_CLIENT_SECRET = credentials('REACT_APP_MY_NAVER_CLIENT_SECRET')
-        REACT_APP_MY_POWERBI_ID = credentials('REACT_APP_OTHER_VAR')
+        REACT_APP_MY_POWERBI_ID = credentials('REACT_APP_MY_POWERBI_ID')
         REACT_APP_MY_POWERBI_ID_URL = credentials('REACT_APP_MY_POWERBI_ID_URL')
         REACT_APP_MY_POWERBI_TOKEN = credentials('REACT_APP_MY_POWERBI_TOKEN')
         REACT_APP_KAKAO_API_KEY = credentials('REACT_APP_KAKAO_API_KEY')
@@ -22,6 +22,13 @@ pipeline {
         stage("Build") {
                     steps {
                         script {
+                            // .env 파일 생성
+                            writeFile file: '.env', text: """REACT_APP_MY_NAVER_CLIENT_ID=${env.REACT_APP_MY_NAVER_CLIENT_ID}
+                            REACT_APP_MY_NAVER_CLIENT_SECRET=${env.REACT_APP_MY_NAVER_CLIENT_SECRET}
+                            REACT_APP_MY_POWERBI_ID=${env.REACT_APP_MY_POWERBI_ID}
+                            REACT_APP_MY_POWERBI_ID_URL=${env.REACT_APP_MY_POWERBI_ID_URL}
+                            REACT_APP_MY_POWERBI_TOKEN=${env.REACT_APP_MY_POWERBI_TOKEN}
+                            REACT_APP_KAKAO_API_KEY=${env.REACT_APP_KAKAO_API_KEY}"""
                             sh "ls -al"
                             sh "docker compose -p spark build --no-cache frontend"
                         }
