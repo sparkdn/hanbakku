@@ -24,6 +24,24 @@
   color: white;
 }
 
+.timediv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
+
+.input2 {
+  background-color: transparent;
+  border-color: white;
+  width: 100px;
+  height: 45px;
+  margin: 15px;
+  color: white;
+}
+.input > option{
+  color: black;
+}
 .input::placeholder {
   color: white;
 }
@@ -74,3 +92,9 @@
   background-color: #e0eafa; /* 클릭 시 배경색 변경 */
   color: black;
 }
+.form_placeorder{
+  color: white;
+  font-weight: bold;
+}
+
+
