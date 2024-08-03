@@ -5,7 +5,7 @@ body,
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden; /* 스크롤 방지 */
+  /* overflow: hidden; 스크롤 방지 */
 }
 
 body {
@@ -33,4 +33,32 @@ main {
   flex: 8; /* Main의 비율을 8로 설정 */
   background-color: #f0f0f0; /* 원하는 배경 색상 */
   overflow: hidden; /* 필요에 따라 설정 */
+}
+
+.box{
+  width: 100%;
+  /* border: red solid 1px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer{
+  width: 100%;
+  height: 130px;
+  background-color: #2656A4;
+  color: white;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+}
+
+.footer > p{
+  margin: 0;
 }
