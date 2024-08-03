@@ -38,9 +38,9 @@ export default function Main() {
             <>
               <button
                 className={`${styles.searchButton} ${
-                  activeButton === "search" ? styles.activeButton : ""
+                  activeButton === "busStop" ? styles.activeButton : ""
                 }`}
-                onClick={() => setActiveButton("search")}
+                onClick={() => setActiveButton("busStop")}
               >
                 정류장으로 검색
               </button>
