@@ -1,6 +1,9 @@
 .container {
   display: flex;
   align-items: center;
+
+  /* border-bottom: 3px solid #EEE; */
+
 }
 .logo {
   margin: 20px;
@@ -13,3 +16,9 @@
   font-size: 20px;
   font-weight: bold;
 }
+.active{
+  color:#2656A4;
+  font-weight: bold;
+  cursor: pointer;
+}
+
