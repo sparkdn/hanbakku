@@ -102,9 +102,10 @@ export default function Main() {
           {activeType === "관광" && (
             <>
               <button
-                className={`${styles.searchButton} ${activeButton === "search" ? styles.activeButton : ""
-                  }`}
-                onClick={() => setActiveButton("search")}
+                className={`${styles.searchButton} ${
+                  activeButton === "busStop" ? styles.activeButton : ""
+                }`}
+                onClick={() => setActiveButton("busStop")}
               >
                 정류장으로 검색
               </button>
