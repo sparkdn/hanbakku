@@ -22,8 +22,7 @@ pipeline {
         stage("Build") {
                     steps {
                         script {
-							def envContent = "test=\"${env.REACT_APP_MY_NAVER_CLIENT_SECRET.trim()}\"" + "\n" +
-                                            "REACT_APP_MY_NAVER_CLIENT_ID=\"${env.REACT_APP_MY_NAVER_CLIENT_ID.trim()}\"" + "\n" +
+							def envContent = "REACT_APP_MY_NAVER_CLIENT_ID=\"${env.REACT_APP_MY_NAVER_CLIENT_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_NAVER_CLIENT_SECRET=\"${env.REACT_APP_MY_NAVER_CLIENT_SECRET.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_ID=\"${env.REACT_APP_MY_POWERBI_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_ID_URL=\"${env.REACT_APP_MY_POWERBI_ID_URL.trim()}\"" + "\n" +
@@ -31,7 +30,7 @@ pipeline {
                                             "REACT_APP_KAKAO_API_KEY=\"${env.REACT_APP_KAKAO_API_KEY.trim()}\""
 
 							// .env 파일 생성
-							writeFile file: '.env', text: envContent
+							writeFile file: 'frontend/.env', text: envContent
 							
                             sh "cat .env"
                             sh "cat frontend/.env"
