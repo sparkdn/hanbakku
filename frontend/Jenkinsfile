@@ -23,7 +23,7 @@ pipeline {
                     steps {
                         script {
                             // .env 파일 생성
-                            writeFile file: '.env', text: """REACT_APP_MY_NAVER_CLIENT_ID=${env.REACT_APP_MY_NAVER_CLIENT_ID}
+                            writeFile file: 'frontend/.env', text: """REACT_APP_MY_NAVER_CLIENT_ID=${env.REACT_APP_MY_NAVER_CLIENT_ID}
                             REACT_APP_MY_NAVER_CLIENT_SECRET=${env.REACT_APP_MY_NAVER_CLIENT_SECRET}
                             REACT_APP_MY_POWERBI_ID=${env.REACT_APP_MY_POWERBI_ID}
                             REACT_APP_MY_POWERBI_ID_URL=${env.REACT_APP_MY_POWERBI_ID_URL}
