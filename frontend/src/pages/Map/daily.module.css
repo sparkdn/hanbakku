@@ -1,18 +1,21 @@
-.container {
-  width: 100%;
-  height: 100%;
-}
-
 .placeInputContainer {
   display: flex;
+  justify-items: center;
   flex-direction: column;
   margin-top: 10px;
+  background-color: #ebf1fb;
 }
 .placeInput {
+  display: flex;
   width: 90%;
-  height: 60px;
-  background-color: #ebf1fb;
+  height: 50px;
+  background-color: transparent;
   border: transparent;
   margin: 5px;
   border-radius: 20px;
+}
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd; /* 선 색상 */
 }

@@ -14,11 +14,11 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<PowerBI/>} />
+        <Route path="/" element={<PowerBI />} />
         <Route path="/map" element={<Map />} />
-        <Route path="/articles" element={<News/>} />
+        <Route path="/articles" element={<News />} />
       </Routes>
-      <Footer/>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
