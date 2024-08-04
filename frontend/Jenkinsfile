@@ -11,6 +11,7 @@ pipeline {
         REACT_APP_MY_POWERBI_ID_URL = credentials('REACT_APP_MY_POWERBI_ID_URL')
         REACT_APP_MY_POWERBI_TOKEN = credentials('REACT_APP_MY_POWERBI_TOKEN')
         REACT_APP_KAKAO_API_KEY = credentials('REACT_APP_KAKAO_API_KEY')
+        WDS_SOCKET_PORT = 0
     }
 
     stages {
@@ -27,8 +28,8 @@ pipeline {
                                             "REACT_APP_MY_POWERBI_ID=\"${env.REACT_APP_MY_POWERBI_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_ID_URL=\"${env.REACT_APP_MY_POWERBI_ID_URL.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_TOKEN=\"${env.REACT_APP_MY_POWERBI_TOKEN.trim()}\"" + "\n" +
-                                            "REACT_APP_KAKAO_API_KEY=\"${env.REACT_APP_KAKAO_API_KEY.trim()}\""
-
+                                            "REACT_APP_KAKAO_API_KEY=\"${env.REACT_APP_KAKAO_API_KEY.trim()}\"" + "\n" +
+                                            "WDS_SOCKET_PORT=${env.WDS_SOCKET_PORT.trim()}
 							// .env 파일 생성
 							writeFile file: 'frontend/.env', text: envContent
 							
