@@ -35,30 +35,11 @@ main {
   overflow: hidden; /* 필요에 따라 설정 */
 }
 
-.box{
+.box {
   width: 100%;
   /* border: red solid 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.footer{
-  width: 100%;
-  height: 130px;
-  background-color: #2656A4;
-  color: white;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  
-}
-
-.footer > p{
-  margin: 0;
 }

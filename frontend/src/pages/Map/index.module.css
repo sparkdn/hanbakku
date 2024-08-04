@@ -9,8 +9,7 @@
   align-items: center;
 }
 .inputContainer {
-  flex: 2;
-  margin-top: 100px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column; /* 세로 방향으로 배치 */
   align-items: center; /* 가로 가운데 정렬 */
@@ -24,12 +23,14 @@
   color: white;
 }
 
-.timediv{
+.timediv {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
 .input2 {
   background-color: transparent;
@@ -39,7 +40,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
   margin: 15px;
   color: white;
 }
-.input > option{
+.input > option {
   color: black;
 }
 .input::placeholder {
@@ -48,18 +49,25 @@ input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
 .button {
   width: 150px;
   height: 50px;
-  margin-top: 30px;
-  background-color: #3372db;
-  color: white;
-  border: transparent;
+  margin-top: 40px;
+  background-color: white;
+  border: 2px solid #173363;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #ebf1fb;
+}
+.button:active {
+  background-color: #295baf;
+  color: white;
 }
 
 .mapContainer {
-  flex: 4;
   height: 100vh;
   width: 100%;
-  margin-left: 50px;
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -69,7 +77,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
 }
 
 .type {
-  font-size: 30px;
+  font-size: 20px;
   margin: 0 10px;
   font-weight: bold;
   cursor: pointer;
@@ -78,8 +86,8 @@ input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
   color: #2656a4; /* 클릭 시 블루 색상 */
 }
 .searchButton {
-  width: 200px;
-  height: 40px;
+  width: 100px;
+  height: 30px;
   margin-left: 10px;
   background-color: white;
   color: black;
@@ -92,9 +100,7 @@ input[type="time"]::-webkit-calendar-picker-indicator{display: none;}
   background-color: #e0eafa; /* 클릭 시 배경색 변경 */
   color: black;
 }
-.form_placeorder{
+.form_placeorder {
   color: white;
   font-weight: bold;
 }
-
-

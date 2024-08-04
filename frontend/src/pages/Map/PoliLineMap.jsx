@@ -15,7 +15,7 @@ export default function PoliLineMap() {
   return (
     <div
       id="map"
-      style={{ width: "90%", height: "500px" }} // 인라인 스타일
+      style={{ width: "100%", height: "100%" }} // 인라인 스타일
     ></div>
   );
 }

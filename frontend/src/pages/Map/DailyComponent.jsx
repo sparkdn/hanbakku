@@ -10,13 +10,14 @@ export default function DailyComponent() {
           type="text"
           placeholder="출발지를 입력해주세요."
         />
+        <div className={styles.separator} />
         <input
           className={styles.placeInput}
           type="text"
           placeholder="도착지를 입력해주세요."
         />
-        <PoliLineMap />
       </form>
+      <PoliLineMap />
     </>
   );
 }
