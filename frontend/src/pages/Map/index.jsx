@@ -37,7 +37,10 @@ export default function Main() {
     <div className={styles.container}>
       <div className={styles.optionsContainer}>
         <form className={styles.inputContainer}>
-          <p className={styles.form_placeorder}>시작 시간대를 선택해주세요.</p>
+          <p className={styles.form_placeorder}>
+            시작 시간대를 선택해주세요.
+            <span id={styles.question} title="오전12:00부터 오후11:00까지 1시간 단위로 설정할 수 있습니다. 종료시간은 자동으로 설정됩니다."> Q </span>
+          </p>
           <div className={styles.timediv}>
             <input
               className={styles.input2}
@@ -82,7 +85,7 @@ export default function Main() {
         <button className={styles.button}>적용하기</button>
       </div>
 
-      <div className={styles.mapContainer}>
+      {/* <div className={styles.mapContainer}>
         <div className={styles.typeContainer}>
           <p
             className={`${styles.type} ${
@@ -127,7 +130,7 @@ export default function Main() {
         ) : (
           <TourComponent activeButton={activeButton} />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

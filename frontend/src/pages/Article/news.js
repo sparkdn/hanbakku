@@ -84,7 +84,7 @@ function News() {
                 <h1>광주광역시 교통 뉴스 <span id="nowtime">기준시간 : {nowtimef}</span></h1>
                 <details className="newsdetail">
                     <summary>검색 결과 설명</summary>
-                    <p>기준시간 기준 Naver에서 "광주광역시 교통" 관련성 기준으로 검색 결과 상위 30개</p>
+                    <p>기준시간으로 Naver에서 "광주광역시 교통" 관련성 기준으로 검색 결과 상위 30개</p>
                 </details>
             </div>
             <div className="newsbox">

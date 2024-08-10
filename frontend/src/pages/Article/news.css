@@ -28,6 +28,10 @@ details[open] > summary ~ * { animation:reveal 0.5s;}
     border-radius: 25px;
     box-shadow: 4px 4px 10px 4px rgb(229, 229, 229);
 }
+.listArea > a{text-decoration: none;}
+.listArea > a:link {color: black;}
+.listArea > a:visited{color: gray;}
+.listArea > a:hover{color:#295baf;}
 
 #nowtime {
     font-size: medium;

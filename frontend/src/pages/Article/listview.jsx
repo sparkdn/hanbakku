@@ -7,9 +7,11 @@ const ListView = (props)=>{
     
     return (
         <div className="listArea">
-            <h3>{props.title}</h3>
-            <p>{timef}</p>
-            <p>{props.description}</p>
+            <a href={props.link} >
+                <h3>{props.title}</h3>
+                <p>{timef}</p>
+                <p>{props.description}</p>
+            </a>
         </div>
     )
 }
