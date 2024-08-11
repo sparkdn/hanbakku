@@ -85,7 +85,7 @@ export default function Main() {
         <button className={styles.button}>적용하기</button>
       </div>
 
-      {/* <div className={styles.mapContainer}>
+      <div className={styles.mapContainer}>
         <div className={styles.typeContainer}>
           <p
             className={`${styles.type} ${
@@ -130,7 +130,7 @@ export default function Main() {
         ) : (
           <TourComponent activeButton={activeButton} />
         )}
-      </div> */}
+      </div>
     </div>
   );
 }
