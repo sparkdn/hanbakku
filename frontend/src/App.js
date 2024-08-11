@@ -18,7 +18,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/articles" element={<News />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
