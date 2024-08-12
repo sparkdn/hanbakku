@@ -32,8 +32,6 @@ export default function PoliLineMap() {
 
   const getDirection = async (start, waypoints, end) => {
     const url = "https://apis-navi.kakaomobility.com/v1/directions";
-    const apiKey = process.env.REACT_APP_KAKAO_MOBILITY_KEY; // 환경 변수로 API 키 가져오기
-
     const origin = `${start.longitude},${start.latitude}`;
     const destination = `${end.longitude},${end.latitude}`;
     const waypointsString = waypoints
@@ -46,12 +44,13 @@ export default function PoliLineMap() {
       const response = await axios
         .get(requestUrl, {
           headers: {
-            Authorization: `KakaoAK ${apiKey}`,
+            Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_MOBILITY_KEY}`,
             "Content-Type": "application/json",
           },
         })
         .then((response) => {
           console.log(response);
+          // return response;
         });
     } catch (error) {
       console.log(error);
@@ -69,28 +68,10 @@ export default function PoliLineMap() {
             ? locations[i + 6]
             : locations[locations.length - 1];
         const route = await getDirection(start, waypoints, end);
+
         if (route) {
           allRoutes.push(route);
         }
-      }
-      setRoutes(allRoutes);
-
-      if (routes) {
-        routes.forEach((route) => {
-          if (route && route.path) {
-            const linePath = route.path.map(
-              (point) => new kakao.maps.LatLng(point.latitude, point.longitude)
-            );
-            new kakao.maps.Polyline({
-              map: map,
-              path: linePath,
-              strokeWeight: 5,
-              strokeColor: "#FF0000",
-              strokeOpacity: 0.7,
-              strokeStyle: "solid",
-            });
-          }
-        });
       }
     };
 
