@@ -25,13 +25,6 @@ export default function TourComponent({ activeButton }) {
         </>
       ) : (
         <>
-          <form className={styles.placeInputContainer}>
-            <input
-              className={styles.placeInput}
-              type="text"
-              placeholder="정류장을 입력해주세요."
-            />
-          </form>
           <PinMap />
         </>
       )}

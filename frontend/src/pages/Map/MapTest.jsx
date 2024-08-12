@@ -11,7 +11,6 @@ export default function MapTest() {
   });
 
   const getCarDirection = async () => {
-    const REST_API_KEY = "7d7ba925ce3e620e261a960de9ff9a60";
     const url = "https://apis-navi.kakaomobility.com/v1/directions";
 
     // 출발지(origin), 목적지(destination)의 좌표를 문자열로 변환합니다.
@@ -22,12 +21,11 @@ export default function MapTest() {
       origin: origin,
       destination: destination,
     });
-
     const requestUrl = `${url}?${queryParams}`; // 파라미터까지 포함된 전체 URL
     await axios
       .get(requestUrl, {
         headers: {
-          Authorization: `KakaoAK ${REST_API_KEY}`,
+          Authorization: `KakaoAK ${REACT_APP_KAKAO_MOBILITY_KE}`,
           "Content-Type": "application/json",
         },
       })

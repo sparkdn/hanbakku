@@ -3,6 +3,7 @@
 }
 
 .optionsContainer {
+  flex: 1.5;
   background-color: #2656a4;
   display: flex;
   flex-direction: column;
@@ -24,40 +25,6 @@
   color: white;
 }
 
-.timediv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input[type="time"]{
-  position: relative;
-}
-input[type="time"]::-webkit-calendar-picker-indicator {
-  position: absolute;
-  background: transparent;
-  color: transparent; 
-  cursor: pointer;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.input2 {
-  background-color: transparent;
-  border-color: white;
-  width: 100px;
-  height: 45px;
-  margin: 15px;
-  color: white;
-}
-.input > option {
-  color: black;
-}
-.input::placeholder {
-  color: white;
-}
 .button {
   width: 150px;
   height: 50px;
@@ -77,6 +44,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .mapContainer {
+  flex: 8.5;
   height: 100vh;
   width: 100%;
   margin-left: 10px;
@@ -115,9 +83,4 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .form_placeorder {
   color: white;
   font-weight: bold;
-}
-#question{color: yellow;}
-#question:hover{
-  color: red;
-  cursor: pointer;
 }
