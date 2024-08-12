@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import PinMap from "./PinMap";
 import PoliLineMap from "./PoliLineMap";
 import axios from "axios";
 import responseData from "../../responseData.json";
+
 export default function Main() {
   const [activeType, setActiveType] = useState("일상");
   const [values, setValues] = useState({
@@ -16,8 +17,9 @@ export default function Main() {
     culturalFacilities: 0,
     medicalFacilities: 0,
   });
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
+  // input태그 드래그 핸들러
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prevValues) => ({
@@ -29,20 +31,63 @@ export default function Main() {
     setData(responseData.message.data);
   }, []);
 
+
+  //적용하기 버튼을 누르면 -> 통신
+  const [rspdata, setRspData] = useState(""); //응답데이터 받을 곳
+  const formRef = useRef(null); //form데이터 인식
+  const djangoapi = process.env.REACT_APP_DNN_URL;
   const submitHandler = async (e) => {
     e.preventDefault();
+    const formData = new FormData(formRef.current);
+    // if (formRef.current) {
+    //   const formData = new FormData(formRef.current);
+    //   // 폼 데이터를 로그에 출력합니다. (확인용)
+    //   for (const [key, value] of formData.entries()) {
+    //     console.log(`${key}: ${value}`);
+    //   }
+    // }
+
+    // FormData를 JSON으로 변환합니다.
+    const datatemp = {};
+    formData.forEach((value, key) => {
+      datatemp[key] = value;
+    });
+
+    //post요청 보내기
     try {
-      const response = await axios.post("url", values);
-      // handle response
-    } catch (error) {
-      console.error("Error submitting data:", error);
+      const response = await fetch(djangoapi, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        //여기 아직 고쳐야함
+        body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}',//JSON.stringify(datatemp),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const res = await response.json();
+      // console.log("응답 데이터:", res.message.data);
+      //전달해줄 데이터 정리하기
+      const cleanedItems = res.message.data.map(item => ({
+        name: item.정류소명,
+        latitude: item.y,
+        longitude: item.x
+      }))
+      console.log(cleanedItems);
+      setRspData(cleanedItems);
+      console.log("변환된 data", rspdata);
+    } catch (err) {
+      console.error("적용하기 오류:", err);
     }
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.optionsContainer}>
-        <form className={styles.inputContainer}>
+        <form ref={formRef} className={styles.inputContainer} method="POST">
           <p className={styles.form_placeorder}>
             항목별 중요도를 선택해주세요.
           </p>
@@ -135,24 +180,22 @@ export default function Main() {
       <div className={styles.mapContainer}>
         <div className={styles.typeContainer}>
           <p
-            className={`${styles.type} ${
-              activeType === "일상" ? styles.active : ""
-            }`}
+            className={`${styles.type} ${activeType === "일상" ? styles.active : ""
+              }`}
             onClick={() => setActiveType("일상")}
           >
             일상
           </p>
           <p
-            className={`${styles.type} ${
-              activeType === "관광" ? styles.active : ""
-            }`}
+            className={`${styles.type} ${activeType === "관광" ? styles.active : ""
+              }`}
             onClick={() => setActiveType("관광")}
           >
             관광
           </p>
         </div>
 
-        {activeType === "일상" ? <PoliLineMap data={data} /> : <PinMap />}
+        {activeType === "일상" ? <PoliLineMap data={rspdata} /> : <PinMap />}
       </div>
     </div>
   );
