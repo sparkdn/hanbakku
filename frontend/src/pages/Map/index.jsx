@@ -58,7 +58,7 @@ export default function Main() {
           "Content-Type": "text/plain",
         },
         //여기 아직 고쳐야함
-        //   body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}', //JSON.stringify(datatemp),
+        body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}', //JSON.stringify(datatemp),
       });
 
       if (!response.ok) {

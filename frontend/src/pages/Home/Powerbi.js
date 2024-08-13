@@ -50,7 +50,7 @@ function PowerBI() {
     // }, [pca]);
 
     //2. powerbi 보고서 token 발급
-    const [myPBtoken, setPBToken] = useState("");
+    // const [myPBtoken, setPBToken] = useState("");
     const mypowerbigoupid = process.env.REACT_APP_MY_POWERBI_GROUP_ID;
     const mypowerbiid = process.env.REACT_APP_MY_POWERBI_ID;
     const mypowerbiul = process.env.REACT_APP_MY_POWERBI_ID_URL;
@@ -84,7 +84,7 @@ function PowerBI() {
                         type: 'report', // Supported types: report, dashboard, tile, visual, and qna.
                         id: mypowerbiid,
                         embedUrl: mypowerbiul,
-                        accessToken: myPBtoken,
+                        accessToken: mypowerbitoken,
                         tokenType: models.TokenType.Embed, // Use models.TokenType.Aad if you're embedding for your organization.
                         settings: {
                             panes: {
