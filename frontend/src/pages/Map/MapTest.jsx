@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
 const { kakao } = window;
+
 export default function MapTest() {
   const [map, setMap] = useState(null);
   const [data, setData] = useState(null);

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import PinMap from "./PinMap";
 import PoliLineMap from "./PoliLineMap";
-import axios from "axios";
 import responseData from "../../responseData.json";
 
 export default function Main() {
@@ -21,16 +20,14 @@ export default function Main() {
 
   // input태그 드래그 핸들러
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setValues((prevValues) => ({
       ...prevValues,
-      [name]: value,
+      [e.target.name]: e.target.value,
     }));
   };
   useEffect(() => {
     setData(responseData.message.data);
   }, []);
-
 
   //적용하기 버튼을 누르면 -> 통신
   const [rspdata, setRspData] = useState(""); //응답데이터 받을 곳
@@ -58,10 +55,10 @@ export default function Main() {
       const response = await fetch(djangoapi, {
         method: "POST",
         headers: {
-          'Content-Type': 'text/plain',
+          "Content-Type": "text/plain",
         },
         //여기 아직 고쳐야함
-        body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}',//JSON.stringify(datatemp),
+        //   body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}', //JSON.stringify(datatemp),
       });
 
       if (!response.ok) {
@@ -69,13 +66,13 @@ export default function Main() {
       }
 
       const res = await response.json();
-      // console.log("응답 데이터:", res.message.data);
+      console.log("응답 데이터:", res.message.data);
       //전달해줄 데이터 정리하기
-      const cleanedItems = res.message.data.map(item => ({
+      const cleanedItems = res.message.data.map((item) => ({
         name: item.정류소명,
         latitude: item.y,
-        longitude: item.x
-      }))
+        longitude: item.x,
+      }));
       console.log(cleanedItems);
       setRspData(cleanedItems);
       console.log("변환된 data", rspdata);
@@ -88,9 +85,7 @@ export default function Main() {
     <div className={styles.container}>
       <div className={styles.optionsContainer}>
         <form ref={formRef} className={styles.inputContainer} method="POST">
-          <p className={styles.form_placeorder}>
-            항목별 중요도를 선택해주세요.
-          </p>
+          <p className={styles.title}>⭐️항목별 중요도를 선택해주세요⭐️</p>
           <label htmlFor="hotel">관광호텔업 : {values.hotel}</label>
           <input
             type="range"
@@ -99,6 +94,7 @@ export default function Main() {
             max="10"
             value={values.hotel}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="food">광주맛집 : {values.food}</label>
           <input
@@ -108,6 +104,7 @@ export default function Main() {
             max="10"
             value={values.food}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="elderlyCare">
             노인요양시설 : {values.elderlyCare}
@@ -119,6 +116,7 @@ export default function Main() {
             max="10"
             value={values.elderlyCare}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="elderlyJobs">노인일자리 : {values.elderlyJobs}</label>
           <input
@@ -128,6 +126,7 @@ export default function Main() {
             max="10"
             value={values.elderlyJobs}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="largeStore">대규모점포 : {values.largeStore}</label>
           <input
@@ -137,6 +136,7 @@ export default function Main() {
             max="10"
             value={values.largeStore}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="exemplaryRestaurant">
             모범음식점 : {values.exemplaryRestaurant}
@@ -148,6 +148,7 @@ export default function Main() {
             max="10"
             value={values.exemplaryRestaurant}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="culturalFacilities">
             문화시설정보 : {values.culturalFacilities}
@@ -159,6 +160,7 @@ export default function Main() {
             max="10"
             value={values.culturalFacilities}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
           <label htmlFor="medicalFacilities">
             의료기관 : {values.medicalFacilities}
@@ -170,6 +172,7 @@ export default function Main() {
             max="10"
             value={values.medicalFacilities}
             onChange={handleChange}
+            className={styles.rangeInput}
           />
         </form>
         <button className={styles.button} onClick={submitHandler}>
@@ -180,15 +183,17 @@ export default function Main() {
       <div className={styles.mapContainer}>
         <div className={styles.typeContainer}>
           <p
-            className={`${styles.type} ${activeType === "일상" ? styles.active : ""
-              }`}
+            className={`${styles.type} ${
+              activeType === "일상" ? styles.active : ""
+            }`}
             onClick={() => setActiveType("일상")}
           >
             일상
           </p>
           <p
-            className={`${styles.type} ${activeType === "관광" ? styles.active : ""
-              }`}
+            className={`${styles.type} ${
+              activeType === "관광" ? styles.active : ""
+            }`}
             onClick={() => setActiveType("관광")}
           >
             관광

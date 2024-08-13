@@ -39,7 +39,7 @@ export default function PinMap() {
         location.longitude
       );
 
-      const imageSize = new kakao.maps.Size(24, 35);
+      const imageSize = new kakao.maps.Size(30, 40);
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
       const marker = new kakao.maps.Marker({
         map: kakaoMap,

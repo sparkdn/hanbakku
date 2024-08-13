@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Map from "./pages/Map";
 import Nav from "./components/Nav";
 import PowerBI from "./pages/Home/Powerbi";
