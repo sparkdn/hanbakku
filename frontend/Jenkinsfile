@@ -7,11 +7,16 @@ pipeline {
     environment {
         REACT_APP_MY_NAVER_CLIENT_ID = credentials('REACT_APP_MY_NAVER_CLIENT_ID')
         REACT_APP_MY_NAVER_CLIENT_SECRET = credentials('REACT_APP_MY_NAVER_CLIENT_SECRET')
+        REACT_APP_MY_POWERBI_GROUP_ID = credentials('REACT_APP_MY_POWERBI_GROUP_ID')
         REACT_APP_MY_POWERBI_ID = credentials('REACT_APP_MY_POWERBI_ID')
         REACT_APP_MY_POWERBI_ID_URL = credentials('REACT_APP_MY_POWERBI_ID_URL')
         REACT_APP_MY_POWERBI_TOKEN = credentials('REACT_APP_MY_POWERBI_TOKEN')
+        REACT_APP_AZ_TENANT_ID = credentials('REACT_APP_AZ_TENANT_ID')
+        REACT_APP_AZ_CLIENT_ID = credentials('REACT_APP_AZ_CLIENT_ID')
+        REACT_APP_AZ_REDIRECT_URI = credentials('REACT_APP_AZ_REDIRECT_URI')
         REACT_APP_KAKAO_API_KEY = credentials('REACT_APP_KAKAO_API_KEY')
         REACT_APP_KAKAO_MOBILITY_KEY = credentials('REACT_APP_KAKAO_MOBILITY_KEY')
+        REACT_APP_DNN_URL = credentials('REACT_APP_DNN_URL')
         WDS_SOCKET_PORT = 0
     }
 
@@ -26,11 +31,16 @@ pipeline {
                         script {
 							def envContent = "REACT_APP_MY_NAVER_CLIENT_ID=\"${env.REACT_APP_MY_NAVER_CLIENT_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_NAVER_CLIENT_SECRET=\"${env.REACT_APP_MY_NAVER_CLIENT_SECRET.trim()}\"" + "\n" +
+                                            "REACT_APP_MY_POWERBI_GROUP_ID=\"${env.REACT_APP_MY_POWERBI_GROUP_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_ID=\"${env.REACT_APP_MY_POWERBI_ID.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_ID_URL=\"${env.REACT_APP_MY_POWERBI_ID_URL.trim()}\"" + "\n" +
                                             "REACT_APP_MY_POWERBI_TOKEN=\"${env.REACT_APP_MY_POWERBI_TOKEN.trim()}\"" + "\n" +
+                                            "REACT_APP_AZ_TENANT_ID=\"${env.REACT_APP_AZ_TENANT_ID.trim()}\"" + "\n" +
+                                            "REACT_APP_AZ_CLIENT_ID=\"${env.REACT_APP_AZ_CLIENT_ID.trim()}\"" + "\n" +
+                                            "REACT_APP_AZ_REDIRECT_URI=\"${env.REACT_APP_AZ_REDIRECT_URI.trim()}\"" + "\n" +
                                             "REACT_APP_KAKAO_API_KEY=\"${env.REACT_APP_KAKAO_API_KEY.trim()}\"" + "\n" +
                                             "REACT_APP_KAKAO_MOBILITY_KEY=\"${env.REACT_APP_KAKAO_MOBILITY_KEY.trim()}\"" + "\n" +
+                                            "REACT_APP_DNN_URL=\"${env.REACT_APP_DNN_URL.trim()}\"" + "\n" +
                                             "WDS_SOCKET_PORT=${env.WDS_SOCKET_PORT.trim()}"
 							// .env 파일 생성
 							writeFile file: 'frontend/.env', text: envContent
