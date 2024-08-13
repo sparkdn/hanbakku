@@ -35,6 +35,7 @@ export default function Main() {
   const djangoapi = process.env.REACT_APP_DNN_URL;
   const submitHandler = async (e) => {
     e.preventDefault();
+    console.log("🔥");
     const formData = new FormData(formRef.current);
     // if (formRef.current) {
     //   const formData = new FormData(formRef.current);
@@ -66,16 +67,15 @@ export default function Main() {
       }
 
       const res = await response.json();
-      console.log("응답 데이터:", res.message.data);
+      // console.log("응답 데이터:", res.message.data);
       //전달해줄 데이터 정리하기
       const cleanedItems = res.message.data.map((item) => ({
         name: item.정류소명,
         latitude: item.y,
         longitude: item.x,
       }));
-      console.log(cleanedItems);
+      // console.log(cleanedItems);
       setRspData(cleanedItems);
-      console.log("변환된 data", rspdata);
     } catch (err) {
       console.error("적용하기 오류:", err);
     }
