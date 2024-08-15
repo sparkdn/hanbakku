@@ -1,92 +1,88 @@
 import React, { useEffect, useState } from "react";
-import Papa from 'papaparse';
+import Papa from "papaparse";
 const { kakao } = window;
 
 export default function PinMap() {
   const [map, setMap] = useState(null);
   const [locations, setLocations] = useState([]);
 
-  const csvFilePath = "관광지.csv";//public에 위치함
-  useEffect(()=>{
+  const csvFilePath = "관광지.csv"; // public에 위치한 CSV 파일 경로
+
+  // CSV 파일을 파싱하고 locations 상태를 업데이트합니다.
+  useEffect(() => {
     Papa.parse(csvFilePath, {
       download: true,
-      delimiter: ',',
-      header: true, // CSV 첫 번째 행을 헤더로 사용할 경우
+      delimiter: ",",
+      header: true,
       complete: (results) => {
-        console.log('Parsed CSV Data:', results.data);
         setLocations(results.data);
       },
       error: (error) => {
-        console.error('Error parsing CSV:', error);
+        console.error("Error parsing CSV:", error);
       },
     });
+  }, [csvFilePath]);
 
-  },[])
+  // 지도를 초기화합니다.
+  useEffect(() => {
+    const mapContainer = document.getElementById("map");
+    if (mapContainer) {
+      const mapOptions = {
+        center: new kakao.maps.LatLng(35.1595454, 126.8526012), // 초기 중심 좌표
+        level: 7,
+      };
+      const kakaoMap = new kakao.maps.Map(mapContainer, mapOptions);
+      setMap(kakaoMap);
+    }
+  }, []);
 
+  useEffect(() => {
+    if (map && locations.length > 0) {
+      const firstLocation = locations[0];
+      const lat = firstLocation.latitude;
+      const lng = firstLocation.longitude;
 
-// 위치 데이터를 정의
-// const locations = [
-//   { name: "서울역", latitude: 37.55655, longitude: 126.97061 },
-//   { name: "남산타워", latitude: 37.55117, longitude: 126.98823 },
-//   { name: "명동성당", latitude: 37.56361, longitude: 126.98767 },
-//   { name: "동대문디자인플라자", latitude: 37.5665, longitude: 127.009 },
-//   { name: "청계천", latitude: 37.5701, longitude: 126.9796 },
-//   { name: "인사동", latitude: 37.5744, longitude: 126.9855 },
-//   { name: "북촌한옥마을", latitude: 37.5826, longitude: 126.9838 },
-//   { name: "창덕궁", latitude: 37.5794, longitude: 126.991 },
-//   { name: "종묘", latitude: 37.5724, longitude: 126.9928 },
-//   { name: "삼청동", latitude: 37.5873, longitude: 126.9812 },
-//   { name: "광화문", latitude: 37.57593, longitude: 126.97688 },
-// ];
+      if (!isNaN(lat) && !isNaN(lng)) {
+        const newCenter = new kakao.maps.LatLng(lat, lng);
+        map.setCenter(newCenter);
 
+        locations.forEach((location) => {
+          const latLng = new kakao.maps.LatLng(
+            location.latitude,
+            location.longitude
+          );
 
+          const imageSrc =
+            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+          const imageSize = new kakao.maps.Size(30, 40);
+          const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-const imageSrc =
-  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+          const marker = new kakao.maps.Marker({
+            map: map,
+            position: latLng,
+            image: markerImage,
+          });
 
-useEffect(() => {
-  // 지도의 컨테이너를 가져와서 지도를 초기화
-  const mapContainer = document.getElementById("map2");
-  const mapOptions = {
-    center: new kakao.maps.LatLng(37.5665, 126.978), // 서울 시청 위치로 중심 설정
-    level: 3,
-  };
-  const kakaoMap = new kakao.maps.Map(mapContainer, mapOptions);
-  setMap(kakaoMap);
+          const infowindow = new kakao.maps.InfoWindow({
+            content: `<div style="padding:20px;">${location.name}</div>`,
+          });
 
-  // 마커 추가
-  locations.forEach((location) => {
-    const position = new kakao.maps.LatLng(
-      location.latitude,
-      location.longitude
-    );
+          kakao.maps.event.addListener(marker, "mouseover", () => {
+            infowindow.open(map, marker);
+          });
 
-    const imageSize = new kakao.maps.Size(30, 40);
-    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-    const marker = new kakao.maps.Marker({
-      map: kakaoMap,
-      position: position,
-      image: markerImage,
-    });
+          kakao.maps.event.addListener(marker, "mouseout", () => {
+            infowindow.close();
+          });
+        });
+      }
+    }
+  }, [map, locations]);
 
-    const infowindow = new kakao.maps.InfoWindow({
-      content: `<div style="padding:20px;">${location.name}</div>`,
-    });
-
-    kakao.maps.event.addListener(marker, "mouseover", function () {
-      infowindow.open(kakaoMap, marker);
-    });
-
-    kakao.maps.event.addListener(marker, "mouseout", function () {
-      infowindow.close();
-    });
-  });
-}, []);
-
-return (
-  <div
-    id="map2"
-    style={{ width: "100%", height: "100%" }} // 인라인 스타일
-  ></div>
-);
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "100%" }} // 인라인 스타일
+    ></div>
+  );
 }

@@ -72,7 +72,6 @@ export default function Main() {
       // const res = await response.json();
       // console.log("응답 데이터:", res.message.data);
 
-
       // //전달해줄 데이터 정리하기
       // const cleanedItems = res.message.data.map((item) => ({
       //   name: item.정류소명,
@@ -83,37 +82,36 @@ export default function Main() {
 
       const cleanedItems = [
         {
-          "name": "석교삼거리(구룡(대촌))",
-          "longitude": 126.81471944,
-          "latitude": 35.09339444,
+          name: "석교삼거리(구룡(대촌))",
+          longitude: 126.81471944,
+          latitude: 35.09339444,
         },
         {
-          "name": "서창농협벽진지점(마산(서창))",
-          "longitude": 126.83047222,
-          "latitude": 35.13313611,
+          name: "서창농협벽진지점(마산(서창))",
+          longitude: 126.83047222,
+          latitude: 35.13313611,
         },
         {
-          "name": "무등교회(만호마을)",
-          "longitude": 126.84761,
-          "latitude": 35.12773,
+          name: "무등교회(만호마을)",
+          longitude: 126.84761,
+          latitude: 35.12773,
         },
         {
-          "name": "월암(서창입구)",
-          "longitude": 126.83719167,
-          "latitude": 35.14123056,
+          name: "월암(서창입구)",
+          longitude: 126.83719167,
+          latitude: 35.14123056,
         },
         {
-          "name": "금남로4가역(금남로5가역)",
-          "longitude": 126.91355556,
-          "latitude": 35.15144167,
+          name: "금남로4가역(금남로5가역)",
+          longitude: 126.91355556,
+          latitude: 35.15144167,
         },
         {
-          "name": "자활촌입구(금호저수지입구)",
-          "longitude": 126.84876932,
-          "latitude": 35.13845162,
+          name: "자활촌입구(금호저수지입구)",
+          longitude: 126.84876932,
+          latitude: 35.13845162,
         },
-
-      ]
+      ];
 
       setRspData(cleanedItems);
       setIsloading(false);
@@ -223,21 +221,22 @@ export default function Main() {
             적용하기
           </button>
         </form>
-
       </div>
 
       <div className={styles.mapContainer}>
         <div className={styles.typeContainer}>
           <p
-            className={`${styles.type} ${activeType === "일상" ? styles.active : ""
-              }`}
+            className={`${styles.type} ${
+              activeType === "일상" ? styles.active : ""
+            }`}
             onClick={() => setActiveType("일상")}
           >
             일상
           </p>
           <p
-            className={`${styles.type} ${activeType === "관광" ? styles.active : ""
-              }`}
+            className={`${styles.type} ${
+              activeType === "관광" ? styles.active : ""
+            }`}
             onClick={() => setActiveType("관광")}
           >
             관광

@@ -11,7 +11,7 @@ export default function PoliLineMap({ data }) {
     const mapContainer = document.getElementById("map");
     const mapOptions = {
       center: new kakao.maps.LatLng(35.1595454, 126.8526012),
-      level: 3,
+      level: 4,
     };
     const kakaoMap = new kakao.maps.Map(mapContainer, mapOptions);
     setMap(kakaoMap);
@@ -77,7 +77,7 @@ export default function PoliLineMap({ data }) {
       const polyline = new kakao.maps.Polyline({
         path: linePath,
         strokeWeight: 5,
-        strokeColor: "#000000",
+        strokeColor: "#bd1b19",
         strokeOpacity: 0.7,
         strokeStyle: "solid",
       });
