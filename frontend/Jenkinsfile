@@ -17,6 +17,7 @@ pipeline {
         REACT_APP_KAKAO_API_KEY = credentials('REACT_APP_KAKAO_API_KEY')
         REACT_APP_KAKAO_MOBILITY_KEY = credentials('REACT_APP_KAKAO_MOBILITY_KEY')
         REACT_APP_DNN_URL = credentials('REACT_APP_DNN_URL')
+        NODE_TLS_REJECT_UNAUTHORIZED = 0
         WDS_SOCKET_PORT = 0
     }
 
@@ -41,6 +42,7 @@ pipeline {
                                             "REACT_APP_KAKAO_API_KEY=\"${env.REACT_APP_KAKAO_API_KEY.trim()}\"" + "\n" +
                                             "REACT_APP_KAKAO_MOBILITY_KEY=\"${env.REACT_APP_KAKAO_MOBILITY_KEY.trim()}\"" + "\n" +
                                             "REACT_APP_DNN_URL=\"${env.REACT_APP_DNN_URL.trim()}\"" + "\n" +
+                                            "NODE_TLS_REJECT_UNAUTHORIZED=\"${env.NODE_TLS_REJECT_UNAUTHORIZED}\"" + "\n" +
                                             "WDS_SOCKET_PORT=${env.WDS_SOCKET_PORT.trim()}"
 							// .env 파일 생성
 							writeFile file: 'frontend/.env', text: envContent
