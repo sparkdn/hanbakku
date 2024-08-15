@@ -60,6 +60,7 @@ export default function PoliLineMap({ data }) {
   }, [data]);
 
   useEffect(() => {
+    var bounds = new kakao.maps.LatLngBounds();
     if (routes.length > 0) {
       const linePath = [];
       routes.forEach((route) => {
@@ -68,10 +69,11 @@ export default function PoliLineMap({ data }) {
             const lng = road.vertexes[i];
             const lat = road.vertexes[i + 1];
             linePath.push(new kakao.maps.LatLng(lat, lng));
+            const latLng = new kakao.maps.LatLng(lat, lng);
+            bounds.extend(latLng);
           }
         });
       });
-
       const polyline = new kakao.maps.Polyline({
         path: linePath,
         strokeWeight: 5,
@@ -80,6 +82,7 @@ export default function PoliLineMap({ data }) {
         strokeStyle: "solid",
       });
       polyline.setMap(map);
+      map.setBounds(bounds);
     }
   }, [routes]);
   return <div id="map" style={{ width: "100%", height: "100%" }}></div>;
