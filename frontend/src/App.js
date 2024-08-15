@@ -9,12 +9,16 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<PowerBI />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/articles" element={<News />} />
-      </Routes>
+      <div className="wrapper">
+        <div className="contentWrapper">
+          <Nav />
+          <Routes>
+            <Route path="/" element={<PowerBI />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/articles" element={<News />} />
+          </Routes>
+        </div>
+      </div>
       <Footer />
     </BrowserRouter>
   );

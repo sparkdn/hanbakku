@@ -1,44 +1,9 @@
-/* App.css */
-html,
-body,
-#root {
+.wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.App {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column; /* 세로 방향으로 배치 */
-}
-
-nav {
-  flex: 2; /* Nav의 비율을 2로 설정 */
-  background-color: #333; /* 원하는 배경 색상 */
-  color: white; /* 원하는 글자 색상 */
-}
-
-main {
-  flex: 8; /* Main의 비율을 8로 설정 */
-  background-color: #f0f0f0; /* 원하는 배경 색상 */
-  overflow: hidden; /* 필요에 따라 설정 */
-}
-
-.box {
-  width: 100%;
-  /* border: red solid 1px; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.contentWrapper {
+  flex: 1;
 }
