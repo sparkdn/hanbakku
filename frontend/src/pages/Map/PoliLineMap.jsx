@@ -7,6 +7,7 @@ export default function PoliLineMap({ data }) {
   const [routes, setRoutes] = useState([]);
 
   useEffect(() => {
+    console.log(data);
     const mapContainer = document.getElementById("map");
     const mapOptions = {
       center: new kakao.maps.LatLng(35.1595454, 126.8526012),

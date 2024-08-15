@@ -3,9 +3,11 @@ import styles from "./index.module.css";
 import PinMap from "./PinMap";
 import PoliLineMap from "./PoliLineMap";
 import responseData from "../../responseData.json";
+import Loader from "../../components/Loader";
 
 export default function Main() {
   const [activeType, setActiveType] = useState("일상");
+  const [loading, setIsloading] = useState(false);
   const [values, setValues] = useState({
     hotel: 0,
     food: 0,
@@ -35,8 +37,7 @@ export default function Main() {
   const djangoapi = process.env.REACT_APP_DNN_URL;
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("🔥");
-    const formData = new FormData(formRef.current);
+    // const formData = new FormData(formRef.current);
     // if (formRef.current) {
     //   const formData = new FormData(formRef.current);
     //   // 폼 데이터를 로그에 출력합니다. (확인용)
@@ -46,20 +47,21 @@ export default function Main() {
     // }
 
     // FormData를 JSON으로 변환합니다.
-    const datatemp = {};
-    formData.forEach((value, key) => {
-      datatemp[key] = value;
-    });
+    // const datatemp = {};
+    // formData.forEach((value, key) => {
+    //   datatemp[key] = value;
+    // });
 
     //post요청 보내기
     try {
+      setIsloading(true);
       const response = await fetch(djangoapi, {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain",
+          "Content-Type": "application/json", // JSON 형식으로 전송
         },
         //여기 아직 고쳐야함
-        body: '{"hotel": 2,"food": 0,"elderlyCare": 0,"elderlyJobs": 0,"largeStore": 0,"exemplaryRestaurant": 0,"culturalFacilities": 0,"medicalFacilities": 0}', //JSON.stringify(datatemp),
+        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
@@ -67,7 +69,7 @@ export default function Main() {
       }
 
       const res = await response.json();
-      // console.log("응답 데이터:", res.message.data);
+      console.log("응답 데이터:", res.message.data);
       //전달해줄 데이터 정리하기
       const cleanedItems = res.message.data.map((item) => ({
         name: item.정류소명,
@@ -76,12 +78,16 @@ export default function Main() {
       }));
       // console.log(cleanedItems);
       setRspData(cleanedItems);
+      setIsloading(false);
     } catch (err) {
       console.error("적용하기 오류:", err);
     }
   };
+  // 로딩 시 Spinner 띄움
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className={styles.container}>
       <div className={styles.optionsContainer}>
         <form ref={formRef} className={styles.inputContainer} method="POST">
