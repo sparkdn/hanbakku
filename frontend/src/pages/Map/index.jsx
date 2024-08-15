@@ -64,8 +64,9 @@ export default function Main() {
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
+      }else{
+        console.log(response)
       }
-
       const res = await response.json();
       // console.log("응답 데이터:", res.message.data);
       //전달해줄 데이터 정리하기
