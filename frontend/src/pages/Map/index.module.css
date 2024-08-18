@@ -1,0 +1,89 @@
+label {
+  color: white;
+  font-size: 0.9vw;
+}
+
+.container {
+  display: flex;
+}
+
+.optionsContainer {
+  flex: 1.5;
+  background-color: #2656a4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+.inputContainer {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+  font-size: 1vw;
+  color: white;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  margin-top: 25px;
+  background-color: white;
+  border: 2px solid #173363;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.button:hover {
+  background-color: #feebb5;
+}
+.button:active {
+  background-color: #fdc00f;
+}
+
+.mapContainer {
+  flex: 1 1 70%; /* grow, shrink, basis 설정 */
+  height: 100vh;
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.typeContainer {
+  display: flex;
+}
+
+.type {
+  font-size: 25px;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.active {
+  color: #3372db;
+}
+.searchButton {
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  background-color: white;
+  color: black;
+  border: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.activeButton {
+  background-color: #e0eafa; /* 클릭 시 배경색 변경 */
+  color: black;
+}
+
+.rangeInput {
+  accent-color: #fcc013;
+  margin: 10px;
+}
