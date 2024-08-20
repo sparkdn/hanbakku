@@ -78,7 +78,7 @@ export default function Main() {
       //   latitude: item.y,
       //   longitude: item.x,
       // }));
-      // console.log(cleanedItems);
+      // // console.log(cleanedItems);
 
       const cleanedItems = [
         {
@@ -115,7 +115,7 @@ export default function Main() {
 
       setRspData(cleanedItems);
       setIsloading(false);
-      console.log("데이터", cleanedItems);
+      // console.log("데이터", cleanedItems);
     } catch (err) {
       console.error("적용하기 오류:", err);
     }
